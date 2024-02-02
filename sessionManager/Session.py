@@ -10,6 +10,9 @@ class Message:
         return list(self.messages[:])
     def setMessages(self,messages):
         self.messages = messages
+    def rollback(self):
+        if len(self.message) > 0:
+            self.messages = self.messages[:len(self.messages) - 1]
 class Session:
     def __init__(self):
         self.timestamp = int(time.time() * 1000)
@@ -21,6 +24,8 @@ class Session:
         self.message.append(transfermation(text))
     def getMessages(self):
         return self.message.getMessages()
+    def rollback(self):
+        self.message.rollback()
 
 
     

@@ -36,4 +36,5 @@ class SessionMessager:
             session.addMessage(res["choices"][0]["message"]["content"], MessageGenerator.getAns)
             return res["choices"][0]["message"]["content"]
         else:
+            session.rollback()
             return None
